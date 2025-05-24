@@ -6,8 +6,8 @@ const studentCheck = require('../middlewares/studentCheck');
 const upload = require('../config/multer');
 
 // Todas as rotas aqui requerem autenticação e verificação de aluno
-router.use(auth);
-router.use(studentCheck);
+//router.use(auth);
+//router.use(studentCheck);
 
 // Rotas para gerenciamento de foto de perfil
 router.post('/photo', upload.single('photo'), profileController.uploadPhoto);
