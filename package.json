@@ -4,8 +4,7 @@
   "description": "API do Sistema Acadêmico",
   "main": "server.js",
   "scripts": {
-    "start": "node --watch server.js",
-    "dev": "nodemon server.js"
+    "start": "node --watch server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

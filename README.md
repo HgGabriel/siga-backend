@@ -1,119 +1,102 @@
-# SIGA - Sistema Acadêmico (Backend)
+# SIGA - Sistema de Gestão Acadêmica (Backend)
 
-API REST para o sistema acadêmico SIGA, desenvolvida com Node.js, Express e MongoDB.
+API RESTful para o sistema acadêmico **SIGA**, desenvolvida com **Node.js**, **Express** e **MongoDB**, com foco em gerenciamento de **alunos, cursos, matérias, notas, presença e autenticação JWT**.
 
-## Requisitos
+---
 
-- Node.js >= 14.x
-- MongoDB >= 4.x
-- NPM ou Yarn
+## 📋 Requisitos
 
-## Instalação
+* Node.js **>= 14.x**
+* MongoDB **>= 4.x**
+* NPM ou Yarn
 
-1. Clone o repositório:
+---
+
+## 🚀 Instalação
+
+1. **Clone o repositório:**
+
 ```bash
 git clone https://seu-repositorio/siga-backend.git
 cd siga-backend
 ```
 
-2. Instale as dependências:
+2. **Instale as dependências:**
+
 ```bash
 npm install
 # ou
 yarn install
 ```
 
-3. Configure as variáveis de ambiente:
-```bash
-cp .env.example .env
-# Edite o arquivo .env com suas configurações
-```
+3. **Inicie o servidor:**
 
-4. Crie a pasta uploads:
 ```bash
-mkdir uploads
-```
-
-5. Inicie o servidor:
-```bash
-# Modo desenvolvimento
-npm run dev
-# ou
-yarn dev
-
 # Modo produção
 npm start
 # ou
 yarn start
 ```
 
-## Estrutura do Projeto
+---
+
+## 📁 Estrutura do Projeto
 
 ```
 siga-backend/
-├── config/           # Configurações (database, auth, multer)
-├── controllers/      # Controladores da aplicação
-├── middlewares/     # Middlewares personalizados
-├── models/          # Modelos do Mongoose
-├── routes/          # Rotas da API
-├── uploads/         # Pasta para upload de arquivos
-├── utils/           # Utilitários
-├── .env             # Variáveis de ambiente
-├── .env.example     # Exemplo de variáveis de ambiente
-├── package.json     # Dependências e scripts
-└── server.js        # Ponto de entrada da aplicação
+├── config/           # Configurações (database, JWT, upload)
+├── controllers/      # Lógica das rotas (aluno, curso, matéria, auth)
+├── middlewares/      # Autenticação, validação, tratamento de erros
+├── models/           # Schemas do Mongoose (User, Course, Subject)
+├── routes/           # Definição das rotas da API
+├── utils/            # Funções auxiliares (ex: validador de CPF)
+├── .env              # Exemplo de variáveis de ambiente
+├── package.json      # Scripts e dependências
+└── server.js         # Ponto de entrada da aplicação
 ```
 
-## Endpoints da API
+---
 
-### Autenticação
-- `POST /api/auth/login` - Login do aluno
+## 🔐 Endpoints da API
 
-### Aluno
-- `GET /api/student` - Obtém dados do aluno autenticado
+### 📌 Autenticação
 
-### Foto de Perfil
-- `POST /api/profile/photo` - Upload de foto
-- `GET /api/profile/photo` - Obtém URL da foto
-- `DELETE /api/profile/photo` - Remove foto
+* `POST /api/auth/login` – Login com CPF e senha
 
-## Variáveis de Ambiente
+### 👤 Alunos
 
-```env
-# Configurações do Servidor
-PORT=3000
-NODE_ENV=development
+* `POST /api/student` – Cadastro de aluno
+* `GET /api/student` – Buscar aluno por ID (requer token)
 
-# Configurações do MongoDB
-MONGODB_URI=mongodb://localhost:27017/siga-backend
+### 🎓 Cursos
 
-# Configurações do JWT
-JWT_SECRET=seu_segredo_super_secreto
-JWT_EXPIRATION=24h
+* `POST /api/courses` – Criar curso
+* `GET /api/courses` – Listar cursos
 
-# Outras configurações
-UPLOAD_MAX_SIZE=5242880 # 5MB em bytes
-```
+### 📚 Matérias
 
-## Segurança
+* `POST /api/subjects` – Criar nova matéria
+* `GET /api/subjects` – Listar matérias
 
-- Senhas são armazenadas com hash usando bcrypt
-- Autenticação via JWT
-- Validação de CPF
-- Upload de arquivos restrito a imagens
-- Limite de tamanho para uploads
-- CORS configurado
-- Dados sensíveis não são retornados nas respostas
+### 🕵️ Admin
+---
 
-## Desenvolvimento
+## 🔒 Segurança
 
-Para contribuir com o projeto:
+* Hash de senhas com **bcrypt**
+* Autenticação via **JWT**
+* Validação de CPF no backend
+* Upload seguro de arquivos (tamanho e tipo)
+* Middleware de **CORS** configurado
+* Campos sensíveis como senha não são expostos
 
-1. Crie uma branch para sua feature
-2. Faça commit das suas alterações
-3. Push para a branch
-4. Crie um Pull Request
+---
 
-## Licença
+## 👨‍💻 Desenvolvimento
 
-Este projeto está sob a licença MIT. 
+Para contribuir:
+
+1. Crie uma nova branch: `git checkout -b minha-feature`
+2. Faça suas alterações e commits
+3. Envie para o repositório: `git push origin minha-feature`
+4. Crie um **Pull Request**
