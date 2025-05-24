@@ -1,3 +1,27 @@
+/**
+ * Handles user login.
+ * 
+ * @async
+ * @function
+ * @param {import('express').Request} req - Express request object containing CPF and senha in the body.
+ * @param {import('express').Response} res - Express response object used to send the response.
+ * @returns {Promise<void>} Returns a JWT token if authentication is successful, otherwise returns an error message.
+ * 
+ * @throws {500} If there is a server error during the login process.
+ * 
+ * @example
+ * // Request body:
+ * // {
+ * //   "cpf": "12345678909",
+ * //   "senha": "userpassword"
+ * // }
+ * 
+ * // Successful response:
+ * // {
+ * //   "token": "jwt_token_here"
+ * // }
+ */
+
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');

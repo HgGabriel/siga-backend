@@ -1,3 +1,23 @@
+/**
+ * Cria uma nova matéria.
+ *
+ * @async
+ * @function
+ * @param {import('express').Request} req - Objeto de requisição do Express contendo os dados da matéria no corpo.
+ * @param {import('express').Response} res - Objeto de resposta do Express.
+ * @returns {Promise<void>}
+ */
+
+/**
+ * Busca todas as matérias cadastradas.
+ *
+ * @async
+ * @function
+ * @param {import('express').Request} req - Objeto de requisição do Express.
+ * @param {import('express').Response} res - Objeto de resposta do Express.
+ * @returns {Promise<void>}
+ */
+
 const Subject = require("../models/Subject");
 
 exports.createSubject = async (req, res) => {

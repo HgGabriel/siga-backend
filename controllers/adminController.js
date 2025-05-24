@@ -1,3 +1,23 @@
+/**
+ * Cria um novo administrador.
+ *
+ * @async
+ * @function
+ * @param {import('express').Request} req - Objeto de requisição do Express contendo os campos nome, cpf, senha e email no corpo.
+ * @param {import('express').Response} res - Objeto de resposta do Express.
+ * @returns {Promise<void>} Retorna uma resposta JSON indicando sucesso ou erro.
+ */
+
+/**
+ * Exclui um administrador existente.
+ *
+ * @async
+ * @function
+ * @param {import('express').Request} req - Objeto de requisição do Express contendo o campo cpf no corpo.
+ * @param {import('express').Response} res - Objeto de resposta do Express.
+ * @returns {Promise<void>} Retorna uma resposta JSON indicando sucesso ou erro.
+ */
+
 const User = require("../models/User");
 const bcrypt = require('bcryptjs');
 

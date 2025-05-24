@@ -1,3 +1,21 @@
+/**
+ * Centralized error handling middleware for Express.
+ *
+ * Handles various types of errors including:
+ * - Mongoose validation errors
+ * - Mongoose invalid ObjectId errors
+ * - File upload size limit errors
+ * - JWT errors (invalid or expired tokens)
+ * - Generic server errors
+ *
+ * @function
+ * @param {Error} err - The error object.
+ * @param {import('express').Request} req - The Express request object.
+ * @param {import('express').Response} res - The Express response object.
+ * @param {import('express').NextFunction} next - The next middleware function.
+ * @returns {void}
+ */
+
 // Middleware de tratamento de erros centralizado
 module.exports = (err, req, res, next) => {
   console.error(err.stack);

@@ -1,3 +1,24 @@
+/**
+ * @file server.js
+ * @description Entry point for the Academic System API server. Sets up Express app, connects to MongoDB,
+ * configures middlewares, serves static files, registers API routes, handles errors, and starts the server.
+ * 
+ * @requires express
+ * @requires cors
+ * @requires path
+ * @requires dotenv/config
+ * @requires ./config/database
+ * @requires ./middlewares/errorHandler
+ * @requires ./routes/authRoutes
+ * @requires ./routes/studentRoutes
+ * @requires ./routes/profileRoutes
+ * @requires ./routes/adminRoutes
+ * @requires ./routes/subjectRoutes
+ * @requires ./routes/courseRoutes
+ * 
+ * @module server
+ */
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -12,6 +33,7 @@ const studentRoutes = require('./routes/studentRoutes');
 const profileRoutes = require('./routes/profileRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const subjectRoutes = require('./routes/subjectRoutes');
+const courseRoutes = require('./routes/courseRoutes');
 
 // Inicializa o app Express
 const app = express();
@@ -33,6 +55,7 @@ app.use('/api/student', studentRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/subjects', subjectRoutes);
+app.use('/api/courses', courseRoutes);
 
 // Middleware de tratamento de erros
 app.use(errorHandler);

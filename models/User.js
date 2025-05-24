@@ -1,3 +1,52 @@
+/**
+ * User model schema definition for MongoDB using Mongoose.
+ * 
+ * Includes:
+ * - Role-based access (aluno, professor, admin)
+ * - CPF validation and formatting
+ * - Password hashing with bcrypt
+ * - Unique fields: cpf, ra, email
+ * - Embedded schemas for enrolled subjects and grades
+ * - Automatic timestamps for creation and updates
+ * - Password comparison method
+ * 
+ * @module models/User
+ * 
+ * @typedef {Object} Notas
+ * @property {number} [P1] - Nota da primeira prova (0-10)
+ * @property {number} [P2] - Nota da segunda prova (0-10)
+ * @property {number} [T] - Nota do trabalho (0-10)
+ * @property {number} [P3] - Nota da terceira prova (0-10)
+ * 
+ * @typedef {Object} Presenca
+ * @property {number} aulasTotais - Total de aulas da matéria
+ * @property {number} [faltas] - Quantidade de faltas (default: 0)
+ * 
+ * @typedef {Object} MateriaMatriculada
+ * @property {mongoose.Types.ObjectId} materia - Referência à matéria (Subject)
+ * @property {Notas} [notas] - Notas do aluno na matéria
+ * @property {number} [faltas] - Faltas na matéria (default: 0)
+ * @property {Presenca} presenca - Informações de presença
+ * 
+ * @typedef {Object} User
+ * @property {"aluno"|"professor"|"admin"} role - Papel do usuário
+ * @property {string} cpf - CPF do usuário (único, validado)
+ * @property {string} senha - Senha do usuário (hash, não retornada por padrão)
+ * @property {string} [ra] - Registro acadêmico (único)
+ * @property {string} nome - Nome completo do usuário
+ * @property {string} email - Email do usuário (único, minúsculo, trim)
+ * @property {mongoose.Types.ObjectId} [curso] - Referência ao curso (Course)
+ * @property {MateriaMatriculada[]} [materias] - Matérias matriculadas
+ * @property {string} [fotoPerfil] - URL da foto de perfil
+ * @property {Date} [createdAt] - Data de criação
+ * @property {Date} [updatedAt] - Data de atualização
+ * 
+ * @function comparePassword
+ * @description Compara uma senha fornecida com o hash armazenado.
+ * @param {string} candidatePassword - Senha a ser comparada
+ * @returns {Promise<boolean>} true se as senhas coincidirem, false caso contrário
+ */
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const { isValidCpf, format } = require("../utils/cpfValidator");

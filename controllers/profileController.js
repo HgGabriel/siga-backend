@@ -1,3 +1,33 @@
+/**
+ * Uploads or updates the user's profile photo.
+ *
+ * @async
+ * @function
+ * @param {import('express').Request} req - Express request object, expects `req.file` (uploaded file) and `req.user.id` (user ID).
+ * @param {import('express').Response} res - Express response object.
+ * @returns {Promise<void>}
+ */
+
+/**
+ * Deletes the user's profile photo.
+ *
+ * @async
+ * @function
+ * @param {import('express').Request} req - Express request object, expects `req.user.id` (user ID).
+ * @param {import('express').Response} res - Express response object.
+ * @returns {Promise<void>}
+ */
+
+/**
+ * Retrieves the URL of the user's profile photo.
+ *
+ * @async
+ * @function
+ * @param {import('express').Request} req - Express request object, expects `req.user.id` (user ID).
+ * @param {import('express').Response} res - Express response object.
+ * @returns {Promise<void>}
+ */
+
 const fs = require('fs').promises;
 const path = require('path');
 const User = require('../models/User');

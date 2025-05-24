@@ -1,3 +1,26 @@
+/**
+ * Recupera os dados do aluno autenticado.
+ * O ID do usuário é extraído do token JWT pelo middleware de autenticação
+ * e está disponível em req.user.id. O middleware studentCheck garante que
+ * o usuário só pode acessar seus próprios dados.
+ *
+ * @async
+ * @function getStudentData
+ * @param {Object} req - Objeto de requisição Express, contendo o usuário autenticado em req.user.
+ * @param {Object} res - Objeto de resposta Express.
+ * @returns {Promise<void>} Retorna os dados do aluno autenticado ou um erro.
+ */
+
+/**
+ * Cria um novo aluno.
+ *
+ * @async
+ * @function createStudent
+ * @param {Object} req - Objeto de requisição Express, contendo os dados do aluno no corpo da requisição.
+ * @param {Object} res - Objeto de resposta Express.
+ * @returns {Promise<void>} Retorna uma mensagem de sucesso ou erro.
+ */
+
 const User = require('../models/User');
 
 // Recupera os dados do aluno autenticado

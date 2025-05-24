@@ -1,3 +1,29 @@
+/**
+ * Multer configuration module for handling image uploads.
+ * 
+ * - Stores uploaded images in the 'uploads/' directory.
+ * - Filenames are generated using the authenticated user's ID, a unique suffix, and the original file extension.
+ * - Only image files are accepted (based on MIME type).
+ * - Maximum file size allowed is 5MB.
+ * 
+ * @module config/multer
+ * @requires multer
+ * @requires path
+ * 
+ * @typedef {import('multer').StorageEngine} StorageEngine
+ * @typedef {import('multer').FileFilterCallback} FileFilterCallback
+ * 
+ * @constant
+ * @type {import('multer').Multer}
+ * @description Configured Multer instance for handling image uploads.
+ * 
+ * @example
+ * const upload = require('./config/multer');
+ * app.post('/upload', upload.single('image'), (req, res) => {
+ *   res.send('File uploaded successfully!');
+ * });
+ */
+
 const multer = require('multer');
 const path = require('path');
 

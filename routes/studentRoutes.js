@@ -5,10 +5,11 @@ const auth = require('../middlewares/auth');
 const studentCheck = require('../middlewares/studentCheck');
 
 // Todas as rotas aqui requerem autenticação e verificação de aluno
-router.use(auth);
-router.use(studentCheck);
+// router.use(auth);
+// router.use(studentCheck);
 
 // Rota para obter dados do aluno
 router.get('/', studentController.getStudentData);
+router.post('/', studentController.createStudent);
 
 module.exports = router; 

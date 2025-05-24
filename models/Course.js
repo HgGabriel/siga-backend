@@ -1,5 +1,21 @@
 const mongoose = require('mongoose');
 
+/**
+ * Mongoose schema for the Course model.
+ *
+ * @typedef {Object} Course
+ * @property {string} nome - Nome do curso (obrigatório, único).
+ * @property {string} codigo - Código do curso (obrigatório, único).
+ * @property {string} descricao - Descrição do curso (obrigatória).
+ * @property {number} duracao - Duração do curso em semestres (obrigatória, mínimo 1).
+ * @property {Object} coordenador - Informações do coordenador do curso.
+ * @property {string} [coordenador.nome] - Nome do coordenador.
+ * @property {string} [coordenador.email] - Email do coordenador (minúsculo, sem espaços).
+ * @property {Array.<mongoose.Types.ObjectId>} materias - Lista de IDs das matérias associadas (obrigatório).
+ * @property {Date} createdAt - Data de criação do curso (padrão: data atual).
+ * @property {Date} updatedAt - Data da última atualização do curso (padrão: data atual).
+ */
+
 const courseSchema = new mongoose.Schema({
   nome: {
     type: String,
@@ -23,18 +39,17 @@ const courseSchema = new mongoose.Schema({
   coordenador: {
     nome: {
       type: String,
-      required: [true, 'Nome do coordenador é obrigatório']
     },
     email: {
       type: String,
-      required: [true, 'Email do coordenador é obrigatório'],
       lowercase: true,
       trim: true
     }
   },
   materias: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Subject'
+    ref: 'Subject',
+    required: true
   }],
   createdAt: {
     type: Date,
