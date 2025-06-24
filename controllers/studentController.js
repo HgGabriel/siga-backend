@@ -45,6 +45,23 @@ exports.getStudentData = async (req, res) => {
   }
 }; 
 
+
+exports.getAllStudents = async (req, res) => {
+  try {
+    // Busca todos os documentos onde a role é 'aluno'
+    const students = await User.find({ role: 'aluno' })
+      .select('-senha -cpf') // Exclui campos sensíveis para a listagem
+      .populate('curso', 'nome'); // Popula apenas o nome do curso para ser mais leve
+
+    // .find() retorna um array vazio se não encontrar, o que é um resultado válido.
+    // Não é necessário um check de "não encontrado".
+    res.json(students);
+  } catch (err) {
+    console.error('Erro ao buscar a lista de alunos:', err.message);
+    res.status(500).send('Erro no servidor');
+  }
+};
+
 exports.createStudent = async (req, res) => {
   const { nome, email, cpf, senha, ra } = req.body;
 

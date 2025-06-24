@@ -10,6 +10,7 @@ const studentCheck = require('../middlewares/studentCheck');
 
 // Rota para obter dados do aluno
 router.get('/', studentController.getStudentData);
+router.get('/all', studentController.getAllStudents);
 router.post('/', studentController.createStudent);
 
 module.exports = router; 

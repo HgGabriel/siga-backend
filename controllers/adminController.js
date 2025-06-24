@@ -24,19 +24,16 @@ const bcrypt = require('bcryptjs');
 exports.createAdmin = async (req, res) => {
   const { nome, cpf, senha, email } = req.body;
 
-  // Validação básica
   if (!nome || !cpf || !senha) {
     return res
       .status(400)
       .json({ message: "Todos os campos são obrigatórios." });
   }
   try {
-    // Verifica se o administrador já existe
     let admin = await User.findOne({ cpf });
     if (admin) {
       return res.status(400).json({ message: "Administrador já existe." });
     }
-    // Cria um novo administrador
     admin = new User({
       nome,
       email,
@@ -57,7 +54,6 @@ exports.deleteAdmin = async (req, res) => {
   const { cpf } = req.body;
 
   try {
-    // Verifica se o administrador existe
     const admin = await User.findOne({ cpf });
     console.log(admin);
     if (!admin) {
@@ -65,7 +61,6 @@ exports.deleteAdmin = async (req, res) => {
       return res.status(404).json({ message: "Administrador não encontrado." });
     }
     
-    // Exclui o administrador
     await User.findByIdAndDelete(admin._id);
     res.status(200).json({ message: "Administrador excluído com sucesso." });
   }

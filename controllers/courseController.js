@@ -16,19 +16,16 @@ const Course = require('../models/Course');
 exports.createCourse = async (req, res) => {
   const { nome, codigo, duracao, descricao, materias } = req.body;
 
-  // Validação básica
   if (!nome || !codigo || !descricao || !duracao || !materias) {
     return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
   }
 
   try {
-    // Verifica se o curso já existe
     let course = await Course.findOne({ codigo });
     if (course) {
       return res.status(400).json({ message: 'Curso já existe.' });
     }
 
-    // Cria um novo curso
     course = new Course({
       nome,
       codigo,
