@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ferramenta de Testes da API</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <aside id="sidebar">
+        <header class="sidebar-header">
+          <h2>API Endpoints</h2>
+        </header>
+        <nav class="sidebar-nav">
+          <ul>
+            <li>
+              <a
+                href="#"
+                class="sidebar-link active"
+                data-target="cadastro-aluno"
+              >
+                <span>Cadastro de Aluno</span>
+              </a>
+              <li>
+                <a href="#" class="sidebar-link" data-target="login">
+                  <span>Login</span>
+                </a>
+              </li>
+              <li>
+    <a href="#" class="sidebar-link" data-target="listar-alunos">
+        <span>Listar Todos os Alunos</span>
+    </a>
+</li>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main id="main-content">
+        <section id="cadastro-aluno" class="form-container active">
+          <h2>Cadastro de Aluno</h2>
+          <form id="alunoForm">
+            <label>Nome: <input type="text" name="nome" required /></label>
+            <label>Email: <input type="email" name="email" required /></label>
+            <label>CPF: <input type="text" name="cpf" required /></label>
+            <label
+              >Senha: <input type="password" name="senha" required
+            /></label>
+            <label>RA: <input type="text" name="ra" required /></label>
+            <label
+              >Curso (ID): <input type="text" name="curso" required
+            /></label>
+            <label
+              >Foto de Perfil (URL): <input type="text" name="fotoPerfil"
+            /></label>
+            <button type="submit">Cadastrar</button>
+          </form>
+          <div id="respostaCadastro" class="response-area"></div>
+        </section>
+
+        <section id="login" class="form-container">
+          <h2>Login</h2>
+          <form id="loginForm">
+            <label>CPF: <input type="text" name="cpf" required /></label>
+            <label
+              >Senha: <input type="password" name="senha" required
+            /></label>
+            <button type="submit">Entrar</button>
+          </form>
+          <div id="respostaLogin" class="response-area"></div>
+        </section>
+
+        <section id="listar-alunos" class="form-container">
+    <h2>Listar Todos os Alunos</h2>
+    <p>Clique no botão abaixo para buscar e exibir a lista de todos os alunos cadastrados no sistema.</p>
+    <button id="btnListarAlunos" class="action-button">Buscar Alunos</button>
+    <div id="respostaListaAlunos" class="response-area"></div>
+</section>
+      </main>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
