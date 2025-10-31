@@ -50,6 +50,7 @@ app.use('/api/profile', profileRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/subjects', subjectRoutes);
 app.use('/api/courses', courseRoutes);
+app.use('/api/fotos', fotoRoutes);
 
 app.use(errorHandler);
 

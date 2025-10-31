@@ -122,8 +122,9 @@ const userSchema = new mongoose.Schema({
     ref: "Course",
   },
   materias: [materiaMatriculadaSchema],
-  fotoPerfil: {
-    type: String,
+  fotoPerfil: {  
+    data: Buffer,
+    contentType: String,
   },
   createdAt: {
     type: Date,
